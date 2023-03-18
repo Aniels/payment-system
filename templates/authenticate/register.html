@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <title>register</title>
+{% endblock header%}
+
+{% block content %}
+    <h1>register page</h1><br>
+    <h1>response data</h1><br>
+    <form action='' method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock content %}

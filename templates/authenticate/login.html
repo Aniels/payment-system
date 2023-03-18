@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}  <title>log in</title>  {% endblock header%}
+
+{% block content %}
+    <h2>log in page</h2>
+
+    {% block loginType%}    {% endblock loginType %}
+
+    <form action='' method="post">
+        {% csrf_token %}
+        <label>account:</label>
+        {{ form }}
+        <input type="submit" value="sign in">
+    </form><br><br>
+
+    <a href={% url 'register' %}>register</a>
+
+
+{% endblock content %}
