@@ -4,11 +4,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet"  href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href={% static '' %}>
     {% block header %}    {% endblock header%}
 </head>
-<body id = 'bg' style="background-image: url('{% static 'interface/bg.jpg' %}');">
-
-    {% block content %}    {% endblock content%}
+<body>
+    <background id = 'bg' style="background-image: url('{% static 'interface/bg.jpg' %}');">
+        <p>I'm very enthusiastic to learn web development!</p>
+        {% block content %}    {% endblock content%}
+    </background>
 </body>
 </html>
 
