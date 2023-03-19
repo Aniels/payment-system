@@ -5,12 +5,12 @@
 {% endblock header%}
 
 {% block content %}
-    <h1>register page</h1><br>
-    <h1>response data</h1><br>
-    <form action='' method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-    </form>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form | linebreaks }}
+            <input type="submit" value="Submit">
+        </form>
 
+    </div>
 {% endblock content %}

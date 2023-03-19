@@ -4,15 +4,15 @@ import secrets
 
 
 # Create your views here.
-def wellcome(request):
-    return render(request, 'authenticate/wellcome.html')
+def home_page(request):
+    return render(request, 'authenticate/homePage.html')
 
 
 def login(request):
     form = LogInForm(request.POST)
     # check whether it's valid:
     if form.is_valid():
-        login_cookie = secrets.token_hex(16)
+        login_cookie = secrets.token_hex(18)
         request.set_cookie('login_cookie', login_cookie)
         return render(request, 'authenticate/loading.html')
 

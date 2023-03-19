@@ -1,0 +1,47 @@
+
+div {
+    margin: 20px;
+    border: 10px;
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,.5);
+}
+a {
+    margin: 5px;
+    border: 5px;
+    padding: 5px;
+}
+.center {
+    text-align: center;
+}
+* {
+    font-family: Arial, serif;
+}
+.background {
+    background-size: contain;
+    width: 100%;
+    /*background-image: url('/static/interface/bg.jpg');*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+nav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Style the links inside the menu bar */
+nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change color of links on hover */
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
