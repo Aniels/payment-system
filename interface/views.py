@@ -5,30 +5,19 @@ import secrets
 
 # Create your views here.
 def home_page(request):
-    return render(request, 'authenticate/homePage.html')
+    return render(request, 'authenticate/home.html')
 
 
 def login(request):
-    form = LogInForm(request.POST)
-    # check whether it's valid:
-    if form.is_valid():
-        login_cookie = secrets.token_hex(18)
-        request.set_cookie('login_cookie', login_cookie)
-        return render(request, 'authenticate/loading.html')
-
-
-def login_client(request):
     if request.method == "POST":
-        return login(request)
+        form = LogInForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            login_cookie = secrets.token_hex(18)
+            request.set_cookie('login_cookie', login_cookie)
+            return render(request, 'authenticate/loading.html')
     form = LogInForm()
     return render(request, 'authenticate/clientLogin.html', {'form': form, 'url': 'login/client/'})
-
-
-def login_admin(request):
-    if request.method == "POST":
-        return login(request)
-    form = LogInForm()
-    return render(request, 'authenticate/adminLogin.html', {'form': form, 'url': 'login/admin/'})
 
 
 # @csrf_exempt
