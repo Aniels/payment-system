@@ -7,7 +7,7 @@
 
     {% block loginType%}    {% endblock loginType %}
 
-    <form action='' method="post">
+    <form method="post">
         {% csrf_token %}
         <label>account:</label>
         {{ form }}

@@ -4,11 +4,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet"  href="{% static 'css/global.css' %}"/>
     {% block header %}    {% endblock header%}
 </head>
-<body id = 'bg' style="background-image: url('{% static 'interface/bg.jpg' %}');">
+<body >
+
+    <p>Empowering your financial journey.</p>
+    <h1>PayPulse Payment</h1>
+    <nav>
+        <a href={% url 'home-page' %}>Home</a>
+        <a href={% url 'register' %}>Log In</a>
+        <a href="#">Sign Out</a>
+        <a href="#">Contact</a>
+    </nav>
+{#    <div>#}
+{#        <a href={% url 'register' %} >register</a>#}
+{#        <a href='login/client/'>client</a>#}
+{#        <a href='login/admin/'>admin</a>#}
+{#    </div>#}
+
 
     {% block content %}    {% endblock content%}
+
 </body>
 </html>
 
