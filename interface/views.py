@@ -20,7 +20,6 @@ def login(request):
     return render(request, 'authenticate/clientLogin.html', {'form': form, 'url': 'login/client/'})
 
 
-# @csrf_exempt
 def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
