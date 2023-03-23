@@ -33,3 +33,7 @@ def register(request):
 
 def loading(request):
     return render(request, 'authenticate/loading.html')
+
+
+def gpt(request):
+    return render(request, 'authenticate/gpt.html')

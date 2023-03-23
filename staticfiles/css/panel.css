@@ -1,0 +1,63 @@
+.panel {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    width: 400px;
+    font-family: Arial, sans-serif;
+}
+h2 {
+    margin-top: 0;
+}
+.balance {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.user-info label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.user-info span {
+    margin-bottom: 10px;
+}
+.transfer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.transfer label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.transfer input {
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.transfer button {
+    background-color: #3e8e41;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.transfer button:hover {
+    background-color: #4CAF50;
+}

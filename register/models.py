@@ -1,16 +1,18 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
-# Create your models here.
-class User(models.Model):
-    user_name = models.CharField(max_length=30)
-    pwd = models.CharField(max_length=30)
+class User(AbstractUser):
+    balance = models.FloatField()
+    token = models.CharField(max_length=36)
+#     overwrite the fields
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    email = models.EmailField()
-    is_admin = models.BooleanField(default=False)
 
 
-class Token(models.Model):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    token = models.CharField(max_length=36)
+class Operation(models.Model):
+    sending_user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    receiving_user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    time = models.DateTimeField(auto_now_add=True)
+
+
