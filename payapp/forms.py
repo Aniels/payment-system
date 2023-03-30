@@ -1,5 +1,6 @@
 from django import forms
 
 
-class Transfer(forms):
-    pass
+class TransferForm(forms.Form):
+    receiver = forms.CharField()
+    sender = forms.FloatField()

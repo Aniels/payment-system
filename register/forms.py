@@ -1,14 +1,17 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
-class LogInForm(forms.Form):
-    user_name = forms.CharField(label='user name', max_length=30)
-    pwd = forms.CharField(label='password', max_length=30)
+class CustomUserCreationForm(UserCreationForm):
+    username = forms.CharField(required=True, max_length=30)
 
+    # override the clean_password2 method to skip the password verification step, in the production we need to commit it
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")  # provided at here to identify this one is unavailable
+        return password1
 
-class RegisterForm(forms.Form):
-    user_name = forms.CharField(label='user name', max_length=30)
-    pwd = forms.CharField(label='password', max_length=30)
-    first_name = forms.CharField(label='first name', max_length=30)
-    last_name = forms.CharField(label='last name', max_length=30)
-    email = forms.EmailField()
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
