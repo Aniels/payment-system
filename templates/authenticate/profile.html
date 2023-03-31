@@ -82,11 +82,12 @@
 {% endblock header%}
 
 {% block content %}
-    <h1>loading page</h1>
+    {% csrf_token %}
+    <h1>wellcome {{ username }}</h1>
     <div class="panel">
         <h2>Payment User Panel</h2>
         <div class="balance">
-            Your account balance is $1,000.00
+            Your account balance is ${{ balance }}
         </div>
         <div class="user-info">
             <label for="name">Name:</label>

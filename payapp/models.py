@@ -1,5 +1,5 @@
 from django.db import models
-from register.models import User
+from register.models import Depositor
 from django.utils.timezone import now
 
 
@@ -17,6 +17,6 @@ class Record(models.Model):
 
 
 class Operation(models.Model):
-    sender = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    receiver = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    sender = models.ForeignKey(Depositor, on_delete=models.DO_NOTHING, related_name='source_account')
+    receiver = models.ForeignKey(Depositor, on_delete=models.DO_NOTHING, related_name='goal_account')
     time = models.DateTimeField(auto_now_add=True)
