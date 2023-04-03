@@ -4,9 +4,9 @@ import secrets
 
 
 # Create your views here.
-def home_page(request):
+def home(request):
     return render(request, 'authenticate/home.html')
 
 
-def loading(request):
+def profile(request):
     return render(request, 'authenticate/profile.html')

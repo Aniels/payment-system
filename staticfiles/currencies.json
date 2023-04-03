@@ -1,0 +1,19 @@
+[
+  {
+    "model": "payapp.currency",
+    "pk": 1,
+    "fields": {
+      "symbol": "GBP",
+      "country" : "Great british Pounds",
+      "rate" : 1.00
+    }
+  },
+  {
+    "model": "myapp.person",
+    "pk": 2,
+    "fields": {
+      "first_name": "Paul",
+      "last_name": "McCartney"
+    }
+  }
+]

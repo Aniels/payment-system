@@ -4,30 +4,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>home</title>
     <link rel="stylesheet"  href="{% static 'css/global.css' %}"/>
     {% block header %}    {% endblock header%}
 </head>
 <body >
-
     <p>Empowering your financial journey.</p>
     <h1>PayPulse Payment</h1>
     <nav>
-        <a href={% url 'home-page' %}>Home</a>
+        <a href={% url 'home' %}>Home</a>
         <a href={% url 'login' %}>Log In</a>
         <a href={% url 'logout' %}>Sign Out</a>
         <a href={% url 'register' %}>Register</a>
-        <a href={% url 'loading' %}>Contact</a>
+        <a href={% url 'profile' %}>Contact</a>
     </nav>
-{#    <div>#}
-{#        <a href={% url 'register' %} >register</a>#}
-{#        <a href='login/client/'>client</a>#}
-{#        <a href='login/admin/'>admin</a>#}
-{#    </div>#}
-
-
     {% block content %}    {% endblock content%}
-
 </body>
 </html>
 

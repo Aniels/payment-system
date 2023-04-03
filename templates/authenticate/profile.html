@@ -1,14 +1,54 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block header %}
-    <title>loading page</title>
+    <title>Payment User Panel</title>
+    <link rel="stylesheet"  href="{% static 'css/profile.css' %}"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 {% endblock header%}
 
 {% block content %}
-    <h2>{{ user.get_full_name }}</h2>
-    <ul>
-        <li>Username: {{ user.username }}</li>
-        <li>Location: {{ user.profile.location }}</li>
-        <li>Birth Date: {{ user.profile.birth_date }}</li>
-    </ul>
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+        <h1>wellcome {{ username }}</h1>
+        <div class="panel">
+            <h2>Payment User Panel</h2>
+            <div class="balance">
+                <h2>{{ user.get_full_name }}</h2>
+                <ul>
+                    <li>Username: {{ user.username }}</li>
+                    <li>Location: {{ user.profile.location }}</li>
+                    <li>Birth Date: {{ user.profile.birth_date }}</li>
+                </ul>
+                Your account balance is ${{ balance }}
+            </div>
+            <div class="user-info">
+                <label for="name">Name:</label>
+                <span>John Doe</span>
+
+                <label for="email">Email:</label>
+                <span>john.doe@example.com</span>
+
+                <label for="phone">Phone:</label>
+                <span>(123) 456-7890</span>
+            </div>
+            <div class="transfer">
+                <h3>Transfer Funds</h3>
+                <label for="recipient">Recipient:</label>
+                <input type="text" id="recipient" name="recipient" required>
+
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" min="1" max="1000" required>
+
+                <button type="submit">Transfer Funds</button>
+            </div>
+            <canvas id="balanceChart"></canvas>
+        </div>
+        <script src='{% static 'js/user-panel.js' %}'></script>
+    {% else %}
+        <div>
+            <h1>You are not log in yet.</h1>
+            <h2 href={% url 'login' %}>log in</h2>
+        </div>
+    {% endif %}
 {% endblock content %}
