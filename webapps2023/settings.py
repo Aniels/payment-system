@@ -53,6 +53,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "webapps2023.urls"
 
+# log in and out setting
+AUTH_USER_MODEL = "register.Account"
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'home'
+
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -124,6 +130,4 @@ STATIC_ROOT = BASE_DIR / 'static'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# log in and out setting
-LOGIN_REDIRECT_URL = "profile"
-LOGOUT_REDIRECT_URL = "home"
+

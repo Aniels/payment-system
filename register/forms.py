@@ -1,15 +1,18 @@
 from django import forms
-from django.contrib.auth.models import User
-from .models import Profile
+from django.contrib.auth.forms import UserCreationForm
+from register.models import Account
 
 
-class UserForm(forms.ModelForm):
+class RegistrationForm(UserCreationForm):
+    # currency = forms.ModelChoiceField(queryset=Currency.objects.all())
+
     class Meta:
-        model = User
-        fields = ('first_name', 'last_name', 'email')
+        model = Account
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'currency']
 
 
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ('url', 'location', 'company')
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput)
+
+

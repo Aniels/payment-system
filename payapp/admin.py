@@ -1,3 +1,5 @@
 from django.contrib import admin
+from payapp.models.currency import Currency
 
-# Register your models here.
+
+admin.site.register(Currency)

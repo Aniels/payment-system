@@ -4,17 +4,10 @@
 
 {% block content %}
     <h2>log in page</h2>
-
-    {% block loginType%}    {% endblock loginType %}
-
     <form method="post">
         {% csrf_token %}
-        <label>account:</label>
-        {{ form }}
+        {{ form.as_p }}
         <input type="submit" value="sign in">
     </form><br><br>
-
     <a href={% url 'register' %}>register</a>
-
-
 {% endblock content %}

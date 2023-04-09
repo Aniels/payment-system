@@ -1,0 +1,12 @@
+[
+  {"model": "payapp.currency", "fields": {"symbol": "GBP", "country": "Great Britches Pound", "rate": 1.0}},
+  {"model": "payapp.currency", "fields": {"symbol": "USD", "country": "US Dollar", "rate": 1.240352}},
+  {"model": "payapp.currency", "fields": {"symbol": "EUR", "country": "Euro", "rate": 1.138883}},
+  {"model": "payapp.currency", "fields": {"symbol": "INR", "country": "Indian Rupee", "rate": 101.97897}},
+  {"model": "payapp.currency", "fields": {"symbol": "AUD", "country": "Australian Dollar", "rate": 1.830161}},
+  {"model": "payapp.currency", "fields": {"symbol": "CAD", "country": "Canadian Dollar", "rate": 1.666793}},
+  {"model": "payapp.currency", "fields": {"symbol": "SGD", "country": "Singapore Dollar", "rate": 1.646677}},
+  {"model": "payapp.currency", "fields": {"symbol": "CHF", "country": "Swiss Franc", "rate": 1.133098}},
+  {"model": "payapp.currency", "fields": {"symbol": "MYR", "country": "Malaysian Ringgit", "rate": 5.468542}},
+  {"model": "payapp.currency", "fields": {"symbol": "JPY", "country": "Japanese Yen", "rate": 164.782577}}
+]
