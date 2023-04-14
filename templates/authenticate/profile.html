@@ -7,34 +7,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 {% endblock header%}
 
-{% block content %}
-    {% csrf_token %}
+{% block profile %}
     {% if user.is_authenticated %}
-        <h1>wellcome</h1>
-        <div class="panel">
-            <h2>User Payment Panel</h2>
-            <div class="balance">
-                Your account balance is ${{ user.balance }}
-                <ul>
-                    <li>User name: {{ user.username }}</li>
-                    <li>Currency: {{ user.currency }}</li>
-                </ul>
-            </div>
-            <div class="transfer">
-                <h3>Transfer Funds</h3>
-                <form action="{% url 'transfer' %}" method="post">
-                    {% csrf_token %}
-                    {{ transaction_form.as_p }}
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
-            <canvas id="balanceChart"></canvas>
-        </div>
-        <script src='{% static 'js/user-panel.js' %}'></script>
+        {% if user.is_staff %}
+            {% block admin %} {% endblock %}
+        {% else %}
+            <h1>wellcome</h1>
+            {% block costomer %} {% endblock %}
+        {% endif %}
     {% else %}
         <div>
             <h1>You are not log in yet.</h1>
             <h2 href={% url 'login' %}>log in</h2>
         </div>
     {% endif %}
-{% endblock content %}
+{% endblock profile %}

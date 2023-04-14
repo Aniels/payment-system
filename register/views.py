@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, Http404
 from django.contrib.auth import authenticate, login, logout
 from register.forms import RegistrationForm, LoginForm
 from payapp.models.currency import Currency
@@ -18,6 +18,16 @@ def register(request):
     return render(request, 'authenticate/register.html', {'register_form': register_form})
 
 
+def admin_register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.instance.is_staff = True
+            form.save()
+            return redirect('profile')
+        return Http404
+
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -33,4 +43,3 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
-

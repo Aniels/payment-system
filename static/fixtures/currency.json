@@ -1,63 +1,79 @@
 [
   {
     "model": "payapp.currency",
+    "pk": 1,
     "fields": {
-      "symbol": "GBP",
+      "currency_code": "GBP",
+      "symbol": "£",
       "country": "Great Britches",
       "rate": 1.0
     }
   },
   {
     "model": "payapp.currency",
+    "pk": 2,
     "fields": {
-      "symbol": "USD",
+      "currency_code": "USD",
+      "symbol": "$",
       "country": "US Dollar",
       "rate": 1.240362
     }
   },
   {
     "model": "payapp.currency",
+    "pk": 3,
     "fields": {
-      "symbol": "EUR",
+      "currency_code": "EUR",
+      "symbol": "€",
       "country": "Euro",
       "rate": 1.138915
     }
   },
   {
     "model": "payapp.currency",
+    "pk": 4,
     "fields": {
-      "symbol": "INR",
+      "currency_code": "INR",
+      "symbol": "₹",
       "country": "Indian Rupee",
       "rate": 101.985022
     }
   },
   {
     "model": "payapp.currency",
+    "pk": 5,
     "fields": {
-      "symbol": "AUD",
+      "currency_code": "AUD",
+      "symbol": "﷼",
       "country": "Australian Dollar",
       "rate": 1.830415
     }
   },
   {
     "model": "payapp.currency",
+    "pk": 6,
     "fields": {
-      "symbol": "CAD",
+      "currency_code": "CAD",
+      "symbol": "$",
       "country": "Canadian Dollar",
       "rate": 1.666844
     }
   },
   {
     "model": "payapp.currency",
+    "pk": 7,
     "fields": {
-      "symbol": "SGD",
+      "currency_code": "SGD",
+      "symbol": "$",
       "country": "Singapore Dollar",
       "rate": 1.646698
     }
   },
   {
     "model": "payapp.currency",
+    "pk": 8,
     "fields": {
+      "currency_code": "CHF",
       "symbol": "CHF",
       "country": "Swiss Franc",
       "rate": 1.133142
@@ -65,16 +81,20 @@
   },
   {
     "model": "payapp.currency",
+    "pk": 9,
     "fields": {
-      "symbol": "MYR",
+      "currency_code": "MYR",
+      "symbol": "RM",
       "country": "Malaysian Ringgit",
       "rate": 5.468643
     }
   },
   {
     "model": "payapp.currency",
+    "pk": 10,
     "fields": {
-      "symbol": "JPY",
+      "currency_code": "JPY",
+      "symbol": "¥",
       "country": "Japanese Yen",
       "rate": 164.778937
     }

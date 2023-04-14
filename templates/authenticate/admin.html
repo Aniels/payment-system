@@ -1,0 +1,54 @@
+{% extends 'authenticate/profile.html' %}
+{% load static %}
+
+{% block admin %}
+    <div class="panel">
+        <h2>Overall Payment Record</h2>
+        <table class="table">
+            <tr>
+                <th>sender</th>
+                <th>amount</th>
+                <th>currency</th>
+                <th>recipient</th>
+                <th>time stamp</th>
+            </tr>
+            {% for payment in payments %}
+                <tr>
+                    <td>{{ payment.sender }}</td>
+                    <td>{{ payment.amount }}</td>
+                    <td>{{ payment.sender.currency }}</td>
+                    <td>{{ payment.recipient }}</td>
+                    <td>{{ payment.time_stamp }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="panel">
+        <table class="table">
+            <tr>
+                <th>pk</th>
+                <th>username</th>
+                <th>is staff</th>
+                <th>recipient</th>
+                <th>date joined</th>
+            </tr>
+            {% for account in accounts %}
+                <tr>
+                    <td>{{ account.pk }}</td>
+                    <td>{{ account.get_username }}</td>
+                    <td>{{ account.is_staff }}</td>
+                    <td>{{ account.date_joined }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="transfer panel">
+        <h3>Admin Register</h3>
+        <form action="{% url 'admin_register' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock admin %}

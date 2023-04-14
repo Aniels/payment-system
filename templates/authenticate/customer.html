@@ -1,0 +1,43 @@
+{% extends 'authenticate/profile.html' %}
+{% load static %}
+
+{% block costomer %}
+    <div class="panel">
+        <h2>User Payment Panel</h2>
+        <div class="balance">
+            Your account balance is {{ user.currency.symbol }} {{ user.balance }}
+            <ul>
+                <li>User name: {{ user.username }}</li>
+                <li>Currency: {{ user.currency }}</li>
+            </ul>
+        </div>
+        <div class="transfer">
+            <h3>Transfer Funds</h3>
+            <form action="{% url 'transfer' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <canvas id="balanceChart"></canvas>
+    </div>
+    <div class="panel">
+        <h2>Payment Record</h2>
+        <table class="table">
+            <tr>
+                <th>recipient</th>
+                <th>amount</th>
+                <th>time stamp</th>
+            </tr>
+            {% for payment in payments %}
+                <tr>
+                    <td>{{ payment.recipient }}</td>
+                    <td>{{ payment.amount }}</td>
+                    <td>{{ payment.time_stamp }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script src='{% static 'js/user-panel.js' %}'></script>
+{% endblock %}

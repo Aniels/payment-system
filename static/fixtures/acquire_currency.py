@@ -25,5 +25,5 @@ for i, tags in enumerate(result.find_all('tr')):
         temp['fields']['country'] = tags.select_one('td').text
         data.append(temp)
 
-with open('../static/currency.json', 'w') as f:
+with open('currency.json', 'w') as f:
     json.dump(data, f)

@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect
-from django.db import transaction
 from django.contrib.auth.decorators import login_required
-from .froms import Transaction_form
 from register.models import Account
+from .froms import Transaction_form
 
 
 @login_required
-@transaction.atomic
 def transfer(request):
     if request.method == 'POST':
         form = Transaction_form(request.POST)
@@ -14,5 +12,6 @@ def transfer(request):
             account = Account.objects.get(username=request.user.username)
             form.instance.sender = account
             form.instance.currency = account.currency
-            form.save()
+            instance = form.save()
+            instance.execute()
             return redirect('profile')

@@ -3,13 +3,10 @@
     padding: 20px;
     margin: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 5px #ccc;
-    width: 400px;
-    font-family: Arial, sans-serif;
-}
-
-h2 {
-    margin-top: 0;
+    overflow: hidden;
+    width: 600px;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .balance {
@@ -70,4 +67,9 @@ h2 {
 
 .transfer button:hover {
     background-color: #3e8e41;
+}
+
+.table {
+    table-layout: fixed;
+    width: 100%;
 }

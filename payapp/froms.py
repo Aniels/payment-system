@@ -7,3 +7,4 @@ class Transaction_form(forms.ModelForm):
         model = Transaction
         fields = ['recipient', 'amount']
         widgets = {'amount': forms.NumberInput(attrs={'min': 0.00})}
+
