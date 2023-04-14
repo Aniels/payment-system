@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, Http404
 from django.contrib.auth import authenticate, login, logout
-from register.forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm
 from payapp.models.currency import Currency
 
 
@@ -38,6 +38,7 @@ def login_view(request):
             return redirect('profile')
     form = LoginForm()
     return render(request, 'authenticate/login.html', {'form': form})
+    # return Http404()
 
 
 def logout_view(request):

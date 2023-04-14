@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 {% endblock header%}
 
-{% block profile %}
+{% block content %}
     {% if user.is_authenticated %}
         {% if user.is_staff %}
             {% block admin %} {% endblock %}
@@ -21,4 +21,4 @@
             <h2 href={% url 'login' %}>log in</h2>
         </div>
     {% endif %}
-{% endblock profile %}
+{% endblock content %}
