@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-uc&5w*2u)d5rbh1&h09gj^m%h&)c%50yh877+v*_2o03edoy=%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'interface.apps.InterfaceConfig',
     'register.apps.RegisterConfig',
     'payapp.apps.PayappConfig',
+    'django_extensions'
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
