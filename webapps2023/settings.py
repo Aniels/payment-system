@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'interface.apps.InterfaceConfig',
     'register.apps.RegisterConfig',
     'payapp.apps.PayappConfig',
-    'django_extensions'
+    'rest_api.apps.RestApiConfig',
+    # third party package
+    'django_extensions',
+    'rest_framework'
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
