@@ -9,9 +9,21 @@ def transfer(request):
     if request.method == 'POST':
         form = Transaction_form(request.POST)
         if form.is_valid():
-            account = Account.objects.get(username=request.user.username)
-            form.instance.sender = account
-            form.instance.currency = account.currency
+            sender = Account.objects.get(username=request.user.username)
+            form.instance.sender = sender
+            form.instance.currency = sender.currency
             instance = form.save()
             instance.execute()
+            return redirect('profile')
+
+
+@login_required
+def require_transfer(request):
+    if request.method == 'POST':
+        form = Transaction_form(request.POST)
+        if form.is_valid():
+            recipient = Account.objects.get(username=request.user.username)
+            form.instance.sender = recipient
+            form.instance.currency = recipient.currency
+            form.save()
             return redirect('profile')

@@ -19,3 +19,4 @@ class Account(AbstractUser):
     def reduce_balance(self, amount):
         self.balance -= amount
         self.save()
+
