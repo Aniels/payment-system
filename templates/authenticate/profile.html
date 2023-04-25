@@ -10,9 +10,10 @@
 {% block content %}
     {% if user.is_authenticated %}
         {% if user.is_staff %}
+            <h1>Admin Panel</h1>
             {% block admin %} {% endblock %}
         {% else %}
-            <h1>wellcome</h1>
+            <h1>Customer Panel</h1>
             {% block costomer %} {% endblock %}
         {% endif %}
     {% else %}
