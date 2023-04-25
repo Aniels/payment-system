@@ -8,15 +8,16 @@ class Transaction(models.Model):
     recipient = models.ForeignKey(Account, on_delete=models.DO_NOTHING, related_name='receiver')
     amount = models.FloatField()
     time_stamp = models.DateTimeField(auto_now=True, null=True)
-    executed = models.BooleanField(default=False)
+    is_executed = models.BooleanField(default=False)
+    is_request = models.BooleanField(default=False)
 
     @transaction.atomic
     def execute(self):
         if self.sender.balance > self.amount:
             self.sender.reduce_balance(self.amount)
-            rate = self.recipient.currency / self.sender.currency
+            rate = self.recipient.currency.rate / self.sender.currency.rate
             self.recipient.increase_balance(self.amount * rate)
-            self.executed = True
+            self.is_executed = True
             self.save()
             return True
         else:

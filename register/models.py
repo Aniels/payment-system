@@ -12,11 +12,11 @@ class Account(AbstractUser):
     def __str__(self):
         return self.get_username()
 
-    def increase_balance(self, amount):
+    def increase_balance(self, amount: float) -> None:
         self.balance += amount
         self.save()
 
-    def reduce_balance(self, amount):
+    def reduce_balance(self, amount: float) -> None:
         self.balance -= amount
         self.save()
 

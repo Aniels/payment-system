@@ -9,7 +9,7 @@ class Transaction_form(forms.ModelForm):
         widgets = {'amount': forms.NumberInput(attrs={'min': 0.00})}
 
 
-class Request_Payments_form(forms.ModelForm):
+class Request_form(forms.ModelForm):
     class Meta:
         model = Transaction
         fields = ['sender', 'amount']

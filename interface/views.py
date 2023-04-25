@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from register.models import Account
 from payapp.models.transaction import Transaction
-from payapp.froms import Transaction_form
+from payapp.froms import Transaction_form, Request_form
 from register.forms import RegistrationForm
 
 
@@ -19,8 +19,16 @@ def profile(request):
         context = {'user': user, 'form': registration_form, 'payments': payments, 'accounts': accounts}
         return render(request, 'authenticate/admin.html', context)
     else:
-        payments = Transaction.objects.filter(sender=user_id)
+        transaction = Transaction.objects.filter(sender=user_id)
+        payments = transaction.filter(is_executed=True)
+        require_transfers = transaction.filter(is_request=True, is_executed=False)
         transaction_form = Transaction_form()
-        context = {'user': user, 'form': transaction_form, 'payments': payments}
+        request_form = Request_form()
+        context = {'user': user,
+                   'form': transaction_form,
+                   'payments': payments,
+                   'request_form': request_form,
+                   'require_transfer': require_transfers
+                   }
         return render(request, 'authenticate/customer.html', context)
 

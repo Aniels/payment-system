@@ -38,7 +38,6 @@ def login_view(request):
             return redirect('profile')
     form = LoginForm()
     return render(request, 'authenticate/login.html', {'form': form})
-    # return Http404()
 
 
 def logout_view(request):

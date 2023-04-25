@@ -11,4 +11,7 @@ urlpatterns = [
     path('admin_register/', register_view.admin_register, name='admin_register'),
     path('profile/', interface_view.profile, name='profile'),
     path('transfer/', payapp_view.transfer, name='transfer'),
+    path('require_transfer/', payapp_view.require_transfer, name='require_transfer'),
+    path('execute_requirement/', payapp_view.execute_requirement, name='execute_requirement'),
+
 ]
