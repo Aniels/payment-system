@@ -26,6 +26,9 @@ p {
 .center {
     text-align: center;
 }
+.right{
+    text-align: right;
+}
 * {
     font-family: Arial, serif;
 }

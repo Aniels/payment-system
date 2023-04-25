@@ -20,7 +20,7 @@ def profile(request):
     user = Account.objects.get(id=user_id)
     if user.is_staff:
         registration_form = RegistrationForm()
-        payments = Transaction.objects.all()
+        payments = Transaction.objects.filter(is_executed=True)
         accounts = Account.objects.all()
         context = {'user': user, 'form': registration_form, 'payments': payments, 'accounts': accounts}
         return render(request, 'authenticate/admin.html', context)

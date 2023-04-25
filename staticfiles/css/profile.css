@@ -75,3 +75,7 @@
     table-layout: fixed;
     width: 100%;
 }
+
+.table, th, td ,balance{
+    text-align: right;
+}

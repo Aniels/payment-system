@@ -6,11 +6,11 @@
         <h2>Overall Payment Record</h2>
         <table class="table">
             <tr>
-                <th>sender</th>
-                <th>amount</th>
-                <th>currency</th>
-                <th>recipient</th>
-                <th>time stamp</th>
+                <th class="center">sender</th>
+                <th class="center">amount</th>
+                <th class="center">currency</th>
+                <th class="center">recipient</th>
+                <th class="center">time stamp</th>
             </tr>
             {% for payment in payments %}
                 <tr>
@@ -27,17 +27,17 @@
         <h2>Overall User List</h2>
         <table class="table">
             <tr>
-                <th>pk</th>
-                <th>username</th>
-                <th>is staff</th>
-                <th>balance</th>
+                <th class="center">pk</th>
+                <th class="center">username</th>
+                <th class="center">is staff</th>
+                <th class="center">balance</th>
             </tr>
             {% for account in accounts %}
                 <tr>
                     <td class="center">{{ account.pk }}</td>
                     <td class="center">{{ account.get_username }}</td>
                     <td class="center">{{ account.is_staff }}</td>
-                    <td class="balance">{{ account.balance }}</td>
+                    <td class="right">{{ account.balance }}</td>
                 </tr>
             {% endfor %}
         </table>

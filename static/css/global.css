@@ -26,6 +26,9 @@ p {
 .center {
     text-align: center;
 }
+.right{
+    text-align: right;
+}
 * {
     font-family: Arial, serif;
 }
@@ -56,4 +59,8 @@ nav a:hover {
     background-color: #ddd;
     color: black;
     border-radius: 15px;
+}
+
+.td {
+    text-align: center;
 }
