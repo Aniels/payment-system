@@ -14,30 +14,30 @@
             </tr>
             {% for payment in payments %}
                 <tr>
-                    <td>{{ payment.sender }}</td>
-                    <td>{{ payment.amount }}</td>
-                    <td>{{ payment.sender.currency }}</td>
-                    <td>{{ payment.recipient }}</td>
-                    <td>{{ payment.time_stamp }}</td>
+                    <td class="center">{{ payment.sender }}</td>
+                    <td class="center">{{ payment.amount }}</td>
+                    <td class="center">{{ payment.sender.currency }}</td>
+                    <td class="center">{{ payment.recipient }}</td>
+                    <td class="center">{{ payment.time_stamp }}</td>
                 </tr>
             {% endfor %}
         </table>
     </div>
     <div class="panel">
+        <h2>Overall User List</h2>
         <table class="table">
             <tr>
                 <th>pk</th>
                 <th>username</th>
                 <th>is staff</th>
-                <th>recipient</th>
-                <th>date joined</th>
+                <th>balance</th>
             </tr>
             {% for account in accounts %}
                 <tr>
-                    <td>{{ account.pk }}</td>
-                    <td>{{ account.get_username }}</td>
-                    <td>{{ account.is_staff }}</td>
-                    <td>{{ account.date_joined }}</td>
+                    <td class="center">{{ account.pk }}</td>
+                    <td class="center">{{ account.get_username }}</td>
+                    <td class="center">{{ account.is_staff }}</td>
+                    <td class="balance">{{ account.balance }}</td>
                 </tr>
             {% endfor %}
         </table>

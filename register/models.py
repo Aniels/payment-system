@@ -14,9 +14,11 @@ class Account(AbstractUser):
 
     def increase_balance(self, amount: float) -> None:
         self.balance += amount
+        self.balance = self.balance.__round__(2)
         self.save()
 
     def reduce_balance(self, amount: float) -> None:
         self.balance -= amount
+        self.balance = self.balance.__round__(2)
         self.save()
 

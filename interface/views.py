@@ -1,14 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from register.models import Account
 from payapp.models.transaction import Transaction
 from payapp.froms import Transaction_form, Request_form
 from register.forms import RegistrationForm
+from django.contrib.auth.decorators import login_required
+
+
+def bring_home(request):
+    return redirect('home')
 
 
 def home(request):
     return render(request, 'authenticate/home.html')
 
 
+@login_required
 def profile(request):
     user_id = request.user.id
     user = Account.objects.get(id=user_id)

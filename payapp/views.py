@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from register.models import Account
 from .froms import Transaction_form, Request_form
+from payapp.models.transaction import Transaction
 
 
 @login_required
@@ -36,12 +37,7 @@ def require_transfer(request):
 
 @login_required
 def execute_requirement(request):
-    from payapp.models.transaction import Transaction
-
-    aws = Transaction.objects.get(pk=22)
-
-    print(request.POST)
-    aws.execute()
-
+    target = Transaction.objects.get(pk=request.POST['require_pk'])
+    target.execute()
     return redirect('profile')
 

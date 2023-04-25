@@ -13,5 +13,4 @@ urlpatterns = [
     path('transfer/', payapp_view.transfer, name='transfer'),
     path('require_transfer/', payapp_view.require_transfer, name='require_transfer'),
     path('execute_requirement/', payapp_view.execute_requirement, name='execute_requirement'),
-
 ]

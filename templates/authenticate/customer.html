@@ -2,28 +2,30 @@
 {% load static %}
 
 {% block costomer %}
-    <div class="panel">
+    <div class="panel" xmlns="http://www.w3.org/1999/html">
         <h2>User Payment Panel</h2>
         <div class="balance">
-            Your account balance is {{ user.currency.symbol }} {{ user.balance }}
+            <p>Your account balance is {{ user.currency.symbol }} {{ user.balance }}</p>
             <ul>
                 <li>User name: {{ user.username }}</li>
                 <li>Currency: {{ user.currency }}</li>
             </ul>
         </div>
+        <canvas id="balanceChart"></canvas>
+    </div>
+    <div class="panel">
+        <h2>Funds Panel</h2>
         <div class="transfer">
-            <h3>Transfer Funds</h3>
+            <h3>transfer right now</h3>
             <form action="{% url 'transfer' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit" value="Submit">
             </form>
         </div>
-        <canvas id="balanceChart"></canvas>
-    </div>
-    <div class="panel">
+        <br>
         <div class="transfer">
-            <h3>Require Funds</h3>
+            <h3>make a requirement to other user</h3>
             <form action="{% url 'require_transfer' %}" method="post">
                 {% csrf_token %}
                 {{ request_form.as_p }}
@@ -32,15 +34,31 @@
         </div>
     </div>
     <div class="panel">
-        <h1>pending transfer list</h1>
-        {% for require in require_transfer %}
-            <form action="execute_requirement">
-                <label> require ID: </label><label>{{ require.pk }}</label>
-                <label> require person: </label><label>{{ require.recipient }}</label>
-                <label> amount: </label><label>{{ require.amount }}</label>
-                <input type="submit" value="accept"><br></br>
-            </form>
-        {% endfor %}
+        <h1>Pending Transfer list</h1>
+        <table class="table">
+            <tr>
+                <th>requirement from</th>
+                <th>amount</th>
+                <th>action</th>
+
+            </tr>
+            {% for require in require_transfer %}
+                <tr>
+                    <td class="center">{{ require.recipient }}</td>
+                    <td class="center">{{ require.amount }}</td>
+                    <td>
+                        <form class="center" action="{% url 'execute_requirement' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="require_pk" value={{ require.pk }}>
+                            <input type="submit" value="accept">
+                        </form>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </table>
+
+
     </div>
 
     <div class="panel">
@@ -53,11 +71,12 @@
             </tr>
             {% for payment in payments %}
                 <tr>
-                    <td>{{ payment.recipient }}</td>
-                    <td>{{ payment.amount }}</td>
-                    <td>{{ payment.time_stamp }}</td>
+                    <td class="center">{{ payment.recipient }}</td>
+                    <td class="center">{{ payment.amount }}</td>
+                    <td class="center">{{ payment.time_stamp }}</td>
                 </tr>
             {% endfor %}
+
         </table>
     </div>
 

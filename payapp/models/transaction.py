@@ -13,10 +13,12 @@ class Transaction(models.Model):
 
     @transaction.atomic
     def execute(self):
-        if self.sender.balance > self.amount:
-            self.sender.reduce_balance(self.amount)
-            rate = self.recipient.currency.rate / self.sender.currency.rate
-            self.recipient.increase_balance(self.amount * rate)
+        sender = self.sender
+        recipient = self.recipient
+        if sender.balance > self.amount:
+            sender.reduce_balance(self.amount)
+            rate = recipient.currency.rate / sender.currency.rate
+            recipient.increase_balance(self.amount * rate)
             self.is_executed = True
             self.save()
             return True
