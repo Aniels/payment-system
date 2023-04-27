@@ -10,5 +10,5 @@ urlpatterns = [
     path('conversion/<int:c1_id>/<int:c2_id>/<float:c1_amount>', ConversionApiView.as_view(), name='my_api_view'),
     path('update/<int:pk>/', UpdateCurrencyAPIView.as_view()),
     path('create/', CreateCurrencyAPIView.as_view()),
-    path('delet/<int:pk>', DeleteCurrencyAPIView.as_view()),
+    path('delete/<int:pk>', DeleteCurrencyAPIView.as_view()),
 ]
