@@ -8,14 +8,16 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            symbol = form.cleaned_data.get('currency')
-            if symbol != 'GBP':
-                form.instance.balance = form.instance.balance * Currency.objects.get(symbol=symbol).rate
+            currency_code = form.cleaned_data.get('currency')
+            print(currency_code)
+            if currency_code != 'GBP':
+                print(currency_code)
+                form.instance.balance = form.instance.balance * Currency.objects.get(currency_code=currency_code).rate
             form.save()
             return redirect('login')
+        return redirect('register')
     else:
-        register_form = RegistrationForm()
-    return render(request, 'authenticate/register.html', {'register_form': register_form})
+        return render(request, 'authenticate/register.html', {'register_form': RegistrationForm()})
 
 
 def admin_register(request):

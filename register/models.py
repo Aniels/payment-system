@@ -21,4 +21,3 @@ class Account(AbstractUser):
         self.balance -= amount
         self.balance = self.balance.__round__(2)
         self.save()
-
