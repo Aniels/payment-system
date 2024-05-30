@@ -1,23 +1,26 @@
-from django.shortcuts import render, redirect, Http404
 from django.contrib.auth import authenticate, login, logout
-from .forms import RegistrationForm, LoginForm
+from django.http import Http404
+from django.shortcuts import redirect, render
 from payapp.models.currency import Currency
+
+from .forms import LoginForm, RegistrationForm
 
 
 def register(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            currency_code = form.cleaned_data.get('currency')
-            print(currency_code)
-            if currency_code != 'GBP':
-                print(currency_code)
-                form.instance.balance = form.instance.balance * Currency.objects.get(currency_code=currency_code).rate
-            form.save()
-            return redirect('login')
-        return redirect('register')
-    else:
+    if request.method != 'POST':
         return render(request, 'authenticate/register.html', {'register_form': RegistrationForm()})
+    form = RegistrationForm(request.POST)
+    if not form.is_valid():
+        return redirect('register')
+    currency_code = form.cleaned_data.get('currency')
+    print(currency_code)
+    if currency_code != 'GBP':
+        print(currency_code)
+        form.instance.balance = (
+            form.instance.balance * Currency.objects.get(currency_code=currency_code).rate
+        )
+    form.save()
+    return redirect('login')
 
 
 def admin_register(request):
@@ -28,6 +31,7 @@ def admin_register(request):
             form.save()
             return redirect('profile')
         return Http404
+
 
 
 def login_view(request):
